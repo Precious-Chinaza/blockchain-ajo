@@ -8,12 +8,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const dbTestRoute = require('./src/routes/dbTest');
+app.use('/api' , dbTestRoute);
+
 
 //simple health /ping endpoint
 
-app.use("/api", require("./routes/health"));
+app.use("/api", require("./src/routes/health"));
 
 const PORT =process.env.PORT || 4000;
+
+app.get('/' , (req, res) => {
+    res.send('Server is alive');
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
