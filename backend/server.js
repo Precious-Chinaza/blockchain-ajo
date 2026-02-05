@@ -25,3 +25,7 @@ app.get('/' , (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+// mounting Auth Route
+
+app.use("/api/auth", require("./src/routes/auth.routes"));
