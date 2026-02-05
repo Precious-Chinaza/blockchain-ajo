@@ -6,8 +6,10 @@ function validateSignup(data) {
     if (!full_name || !email || !password ){
         return "All fields are required";
     }
-
-    if (!email.includes("@")){
+    
+    // 2. Stronger Email Format Check (Regex)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)){
         return "invalid email format";
     }
 
@@ -17,5 +19,6 @@ function validateSignup(data) {
 
     return null; //valid
 }
+
 
 module.exports = {validateSignup};
